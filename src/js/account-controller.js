@@ -274,7 +274,7 @@ export async function signInWithGoogle() {
     $(".pageLogin .preloader").addClass("hidden");
     $(".pageLogin .button").removeClass("disabled");
     signedInUser.user.delete();
-    axiosInstance.post("/user/delete", { uid: signedInUser.user.uid });
+    axiosInstance.delete("/user/delete");
     return;
   }
 }
@@ -484,7 +484,7 @@ async function signUp() {
     //make sure to do clean up here
     if (createdAuthUser) {
       await createdAuthUser.user.delete();
-      axiosInstance.post("/user/delete", { uid: createdAuthUser.user.uid });
+      axiosInstance.delete("/user");
     }
     let txt;
     if (e.response) {
